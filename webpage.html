@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+
+<!--Please note this html file setup the port as ws://localhost:9999/. Please double check 
+if the port number matches with the one typed in terminal when running the file-->
+
+<!--This file displays the distributions that stored in my system.
+The stream data are collected by curling the gov web api, and then find cities and referring
+URL these two key words. Then I get all the hashmap contains these two key words. After that,
+I calculate the rate, probability, entropy, and distribution -->
+
+<!-- In order to run the webpage.html file correctly, please double check if the
+all the python files and webpage.html file are put in the same path. Then we can open a 
+new terminal and $cd ./path to the file. And then run 
+$websocketd ~~port=9999 ./city-bot-api.py. Please double check the port number is the 
+same as the port number in the html file. If you don't see the server start, it means you 
+need to change permission of the python file. To change the permission, first 
+$cd /path to file. Then run $chmod 777 city-bot-api.py. After this, we are finally 
+ready to run the html file -->
+
+
+<html>
+	<head>
+		<!-- Setup the text and margin of the webpage-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>2 Column Layout &mdash; Left Menu</title>
+		<style type="text/css">
+		
+			body{
+				margin:0;
+				padding:0;
+				font-family: Sans-Serif;
+				line-height: 1.5em;
+			}
+			
+			main {
+				padding-bottom: 10010px;
+				margin-bottom: -10000px;
+				float: left;
+				width: 100%;
+			}
+			
+			#nav {
+				float: left;
+				width: 230px;
+				margin-left: -100%;
+				padding-bottom: 10010px;
+				margin-bottom: -10000px;
+				background: #eee;
+			}
+			
+			#wrapper {
+				overflow: hidden;
+			}
+			
+			#content {
+				margin-left: 230px; /* Same as 'nav' width */
+			}
+			
+			.innertube{
+				margin: 15px; /* Padding for content */
+				margin-top: 0;
+			}
+			
+			p {
+				color: #555;
+			}
+	
+			nav ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			nav ul a {
+				color: darkgreen;
+				text-decoration: none;
+			}
+	
+		</style>
+		
+		<script type="text/javascript">
+			
+			var bodyText=["event.data"]
+			
+		</script>	
+	
+	</head>
+	
+	<body>
+		<div id="wrapper">
+		
+			<main>
+				<div id="content">
+					<div class="innertube">
+						<!-- Write the Header -->
+						<h1>The issue status</h1>
+						<p><script>
+							var ws = new WebSocket('ws://localhost:9999/'); /* Display the data on the webpage via WebSocket*/
+							ws.onmessage = function(event){
+								document.write(event.data + '\n'); /*Display the issue status to see if this is a hot issue*/
+							};
+						</script></p>
+					</div>
+				</div>
+			</main>
+			<nav id="nav">
+				<div class="innertube">			
+			
+				</div>
+			</nav>
+			
+		</div>
+	</body>
+</html>
